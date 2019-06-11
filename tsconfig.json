@@ -5,7 +5,7 @@
     "module": "commonjs",
     "target": "es2015",
     "lib": [
-      "es6"
+      "es5"
     ],
     "noImplicitAny": true,
     "strictNullChecks": true,
