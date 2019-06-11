@@ -15,8 +15,6 @@ build_script:
 - npm run tslint
 - npm run pack-tool
 - npm run pack-runtime
-test_script:
-- npm test
 artifacts:
 - path: 'antlr4ts-*.tgz'
 cache:
