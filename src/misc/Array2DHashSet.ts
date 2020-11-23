@@ -5,7 +5,7 @@
 
 // ConvertTo-TS run at 2016-10-03T02:09:41.7434086-07:00
 
-import * as assert from "assert";
+import assert from "assert";
 import { DefaultEqualityComparator } from "./DefaultEqualityComparator";
 import { EqualityComparator } from "./EqualityComparator";
 import { NotNull, Nullable, Override, SuppressWarnings } from "../Decorators";
@@ -22,7 +22,7 @@ import { MurmurHash } from "./MurmurHash";
 const INITAL_CAPACITY: number = 16; // must be power of 2
 const LOAD_FACTOR: number = 0.75;
 
-export class Array2DHashSet<T> implements JavaSet<T> {
+export class Array2DHashSet<T extends { toString(): string; }> implements JavaSet<T> {
 	@NotNull
 	protected comparator: EqualityComparator<T>;
 
@@ -160,7 +160,7 @@ export class Array2DHashSet<T> implements JavaSet<T> {
 		let newTable: Array<T[] | undefined> = this.createBuckets(newCapacity);
 		this.buckets = newTable;
 		this.threshold = Math.floor(newCapacity * LOAD_FACTOR);
-//		System.out.println("new size="+newCapacity+", thres="+threshold);
+		//		System.out.println("new size="+newCapacity+", thres="+threshold);
 		// rehash all existing entries
 		let oldSize: number = this.size;
 		for (let bucket of old) {
